@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: addressbook-ingress
+  namespace: directory
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:322266404742:certificate/bc574743-1292-4051-8152-77e1646f6655
+    #   alb.ingress.kubernetes.io/subnets:
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-port: "443"
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/healthcheck-path: /addressbook-1.0
+    alb.ingress.kubernetes.io/success-codes: 200,302
+    alb.ingress.kubernetes.io/load-balancer-name: addressbook-server-ip
+    alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=30
+spec:
+  ingressClassName: alb
+  rules:
+    - host: abook.shiawslab.com
+      http:
+        paths:
+          - path: /addressbook-1.0
+            pathType: Prefix
+            backend:
+              service:
+                name: addressbook-service
+                port:
+                  number: 8080
