@@ -10,7 +10,7 @@ tools {
     stages {
       stage('1. Git Checkout') {
         steps {
-          git branch: 'main', credentialsId: 'Github-pat', url: 'https://github.com/ndiforfusi/addressbook.git'
+          git branch: 'main', credentialsId: 'Github-pat', url: 'https://github.com/hardcoredevopsgroup/address-book-application.git'
         }
       }
       stage('2. Build with maven') { 
