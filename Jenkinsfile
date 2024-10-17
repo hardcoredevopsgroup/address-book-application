@@ -19,17 +19,18 @@ tools {
          }
        }
       stage('3. SonarQube analysis') {
-      environment {SONAR_TOKEN = credentials('sonar-token-abook')}
+      environment {SONAR_TOKEN = credentials('sonarcloud-token')}
       steps {
        script {
          def scannerHome = tool 'SonarQube-Scanner-6.0.0';
          withSonarQubeEnv("sonarqube-integration") {
          sh "${tool("SonarQube-Scanner-6.0.0")}/bin/sonar-scanner  \
-           -Dsonar.projectKey=addressbook-application \
-           -Dsonar.projectName='addressbook-application' \
-           -Dsonar.host.url=https://sonar.shiawslab.com \
-           -Dsonar.token=$SONAR_TOKEN \
+           -Dsonar.projectKey=address-book-application \
+           -Dsonar.projectName='address-book-application' \
+           -Dsonar.host.url=https://sonarcloud.io/ \
+           -Dsonar.login=$SONAR_TOKEN \
            -Dsonar.sources=src/main/java/ \
+           -Dsonar.organization=hardcoredevops \
            -Dsonar.java.binaries=target/classes"
           }
          }
