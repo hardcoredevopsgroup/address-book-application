@@ -18,10 +18,15 @@ tools {
           sh "mvn clean package"
          }
        }
-      stage('3. SonarQube analysis') {
-      environment {SONAR_TOKEN = credentials('sonarcloud-token')}
+      stage('3. SonarCloud analysis') {
+      // environment {SONAR_TOKEN = credentials('sonarcloud-token')}
       steps {
-       script {
+        withSonarQubeEnv("credentialsId: 'sonarcloud-token'") {
+          sh 'mvn sonar:sonar'
+        }
+      }
+        /*
+        script{
          def scannerHome = tool 'SonarCloud';
          withSonarQubeEnv("SonarCloud") {
          sh "${scannerHome}/bin/sonar-scanner  \
@@ -33,7 +38,7 @@ tools {
            -Dsonar.organization=hardcoredevops \
            -Dsonar.java.binaries=target/classes"
           }
-         }
+         }*/
        }
       }/*
       stage('4. Docker image build') {
