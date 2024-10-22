@@ -1,5 +1,5 @@
 pipeline {
- agent { node { label "maven-sonarqube-node" } }
+ agent any  // { node { label "maven-sonarqube-node" } }
  parameters   {
    choice(name: 'aws_account',choices: ['322266404742', '4568366404742', '922266408974'], description: 'aws account hosting image registry')
    choice(name: 'ecr_tag',choices: ['1.0.0','1.1.0','1.2.0'], description: 'Choose the ecr tag version for the build')
@@ -35,7 +35,7 @@ tools {
           }
          }
        }
-      }
+      }/*
       stage('4. Docker image build') {
          steps{
           sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${params.aws_account}.dkr.ecr.us-west-2.amazonaws.com"
@@ -70,7 +70,7 @@ tools {
          Dominion System Technologies,
          +1 (313) 413-1477''', cc: 'fusisoft@gmail.com', from: '', replyTo: '', subject: 'Application was Successfully Deployed!!', to: 'fusisoft@gmail.com'
       }
-    }
+    } */
  }
 }
 
