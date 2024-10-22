@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.fusi.tutorial</groupId>
+    <groupId>com.hardcoredevops.tutorial</groupId>
     <artifactId>addressbook</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
-    <name>fusi Addressbook demo</name>
+    <name>Hardcoredevops Addressbook demo</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,8 +16,8 @@
     </properties>
     <repositories>
         <repository>
-            <id>ndifor-prereleases</id>
-            <name>ndifor Pre-releases</name>
+            <id>hardcoredevops-prereleases</id>
+            <name>hardcoredevops Pre-releases</name>
             <url>https://maven.vaadin.com/vaadin-prereleases</url>
         </repository>
         <!-- Essential Vaadin artifacts are in maven central, but maven.vaadin.com 
