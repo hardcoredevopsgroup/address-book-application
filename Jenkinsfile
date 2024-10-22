@@ -19,26 +19,22 @@ tools {
          }
        }
       stage('3. SonarCloud analysis') {
-      // environment {SONAR_TOKEN = credentials('sonarcloud-token')}
-      steps {
-        withSonarQubeEnv("credentialsId: 'sonarcloud-token'") {
-          sh 'mvn sonar:sonar'
-        }
-      }
-        /*
-        script{
-         def scannerHome = tool 'SonarCloud';
-         withSonarQubeEnv("SonarCloud") {
-         sh "${scannerHome}/bin/sonar-scanner  \
-           -Dsonar.projectKey=address-book-application \
-           -Dsonar.projectName='address-book-application' \
-           -Dsonar.host.url=https://sonarcloud.io/ \
-           -Dsonar.login=$SONAR_TOKEN \
-           -Dsonar.sources=src/main/java/ \
-           -Dsonar.organization=hardcoredevops \
-           -Dsonar.java.binaries=target/classes"
+        environment {SONAR_TOKEN = credentials('sonarcloud-token')}
+        steps {
+          script{
+            def scannerHome = tool 'SonarCloud';
+            withSonarQubeEnv("SonarCloud") {
+            sh "${scannerHome}/bin/sonar-scanner  \
+              -Dsonar.projectKey=address-book-application \
+              -Dsonar.projectName='address-book-application' \
+              -Dsonar.host.url=https://sonarcloud.io/ \
+              -Dsonar.login=$SONAR_TOKEN \
+              -Dsonar.sources=src/main/java/ \
+              -Dsonar.organization=hardcoredevops \
+              -Dsonar.java.binaries=target/classes"
+            }
           }
-         }*/
+        }
       }/*
       stage('4. Docker image build') {
          steps{
