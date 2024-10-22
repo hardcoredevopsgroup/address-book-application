@@ -39,7 +39,6 @@ tools {
            -Dsonar.java.binaries=target/classes"
           }
          }*/
-       }
       }/*
       stage('4. Docker image build') {
          steps{
