@@ -23,8 +23,8 @@ tools {
       steps {
        script {
          def scannerHome = tool 'SonarCloud';
-         withSonarQubeEnv("sonarqube-integration") {
-         sh "${tool("SonarCloud")}/bin/sonar-scanner  \
+         withSonarQubeEnv("SonarCloud") {
+         sh "${scannerHome}/bin/sonar-scanner  \
            -Dsonar.projectKey=address-book-application \
            -Dsonar.projectName='address-book-application' \
            -Dsonar.host.url=https://sonarcloud.io/ \
