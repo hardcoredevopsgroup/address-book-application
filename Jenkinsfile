@@ -5,7 +5,7 @@ pipeline {
    choice(name: 'ecr_tag',choices: ['1.0.0','1.1.0','1.2.0'], description: 'Choose the ecr tag version for the build')
        }
 tools {
-    maven "Maven-3.9.8"
+    maven "maven3.9"
     }
     stages {
       stage('1. Git Checkout') {
