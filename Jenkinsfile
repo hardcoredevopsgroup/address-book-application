@@ -30,7 +30,7 @@ tools {
               -Dsonar.host.url=https://sonarcloud.io/ \
               -Dsonar.login=$SONAR_TOKEN \
               -Dsonar.sources=src/main/java/ \
-              -Dsonar.organization=hardcoredevops \
+              -Dsonar.organization=hardcoredevopsgroup \
               -Dsonar.java.binaries=target/classes"
             }
           }
