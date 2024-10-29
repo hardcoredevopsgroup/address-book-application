@@ -43,8 +43,8 @@ tools {
           sh "sudo docker tag addressbook:latest ${params.aws_account}.dkr.ecr.us-east-2.amazonaws.com/addressbook:${params.ecr_tag}"
           sh "sudo docker push ${params.aws_account}.dkr.ecr.us-east-2.amazonaws.com/addressbook:${params.ecr_tag}"
          }
-       } /*
-      stage('5. Application deployment in eks') {
+       } 
+     /* stage('5. Application deployment in eks') {
         steps{
           kubeconfig(caCertificate: '',credentialsId: 'k8s-kubeconfig', serverUrl: '') {
           sh "kubectl apply -f manifest"
