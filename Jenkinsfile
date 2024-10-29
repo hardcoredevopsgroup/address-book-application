@@ -1,7 +1,7 @@
 pipeline {
  agent any  // { node { label "maven-sonarqube-node" } }
  parameters   {
-   choice(name: 'aws_account',choices: ['322266404742', '4568366404742', '922266408974'], description: 'aws account hosting image registry')
+   choice(name: 'aws_account',choices: ['160885259898', '4568366404742', '922266408974'], description: 'aws account hosting image registry')
    choice(name: 'ecr_tag',choices: ['1.0.0','1.1.0','1.2.0'], description: 'Choose the ecr tag version for the build')
        }
 tools {
@@ -35,15 +35,15 @@ tools {
             }
           }
         }
-      }/*
+      }
       stage('4. Docker image build') {
          steps{
-          sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${params.aws_account}.dkr.ecr.us-west-2.amazonaws.com"
+          sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${params.aws_account}.dkr.ecr.us-east-2.amazonaws.com"
           sh "sudo docker build -t addressbook ."
-          sh "sudo docker tag addressbook:latest ${params.aws_account}.dkr.ecr.us-west-2.amazonaws.com/addressbook:${params.ecr_tag}"
-          sh "sudo docker push ${params.aws_account}.dkr.ecr.us-west-2.amazonaws.com/addressbook:${params.ecr_tag}"
+          sh "sudo docker tag addressbook:latest ${params.aws_account}.dkr.ecr.us-east-2.amazonaws.com/addressbook:${params.ecr_tag}"
+          sh "sudo docker push ${params.aws_account}.dkr.ecr.us-east-2.amazonaws.com/addressbook:${params.ecr_tag}"
          }
-       }
+       } /*
       stage('5. Application deployment in eks') {
         steps{
           kubeconfig(caCertificate: '',credentialsId: 'k8s-kubeconfig', serverUrl: '') {
