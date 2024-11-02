@@ -64,7 +64,20 @@
             <type>jar</type>
         </dependency>
     </dependencies>
-
+<distributionManagement>
+      <repository>
+        <id>nexus</id>
+        <name>Landmark Technologies Releases Nexus Repository</name>
+        <url>http://52.14.247.116:8081/repository/address-book-release/</url>
+      </repository>
+      
+      <snapshotRepository>
+        <id>nexus</id>
+        <name>Landmark Technologies Snapshot Nexus Repository </name>
+        <url>http://52.14.247.116:8081/repository/address-book-snapshot/</url>
+      </snapshotRepository>
+      
+  </distributionManagement>
     <build>
         <plugins>
             <plugin>
